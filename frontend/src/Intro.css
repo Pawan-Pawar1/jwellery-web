@@ -1,4 +1,5 @@
-video{
+@media screen and (min-width :601px) {
+    video{
     height: 40%;
     width: 100vh;
     border: 2px solid rgb(247, 72, 247);
@@ -20,4 +21,35 @@ video{
 .btn-outline-purple:hover {
     background-color:  rgb(247, 72, 247);;
     color: white;
+}
+
+}
+
+@media screen and (max-width:600px) {
+    video{
+    height: 20rem;
+    width: 93%;
+    border: 2px solid rgb(247, 72, 247);
+    border-radius: 5rem;
+    object-fit: cover;
+    margin-left: 3%;
+    
+}
+
+.info{
+    font-size: 2rem;
+    color:  rgb(247, 72, 247);
+    padding-top: 5%;
+   
+}
+.btn-outline-purple {
+    border: 2px solid  rgb(247, 72, 247);;   /* Bootstrap purple */
+    color:  rgb(247, 72, 247);;
+    background-color: transparent;
+}
+
+.btn-outline-purple:hover {
+    background-color:  rgb(247, 72, 247);;
+    color: white;
+}
 }
