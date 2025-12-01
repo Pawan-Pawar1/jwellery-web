@@ -7,14 +7,14 @@ export default function Intro() {
       <div className="row">
 
         {/* Video column */}
-        <div className="col-sm-12 col-md-8 order-1">
+        <div className="col-sm-12 col-md-12 col-xl-8 order-1">
           <video autoPlay loop muted>
             <source src="/vedeos/intro.mp4" type="video/mp4" />
           </video>
         </div>
 
         {/* Text column */}
-        <div className="col-sm-12 col-md-4 text-center info order-2">
+        <div className="col-sm-12 col-md-12 col-xl-4 text-center info order-2">
           Since 1971
           <br />
           most trusted shop in Hingoli

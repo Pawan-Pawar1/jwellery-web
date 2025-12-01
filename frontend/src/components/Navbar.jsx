@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import "./Navbar.css"
+import {Link} from "react-router-dom"
 export default function Navbar(){
 
   const[open, setOpen]=useState(false);
@@ -18,11 +19,12 @@ export default function Navbar(){
         <div className="mobile-menu-page animate">
          
           <ul>
-            <li ><a href=""> <i className="fa-solid fa-xmark"></i></a></li>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Products</a></li>
-            <li><a href="#">Necklace</a></li>
-            <li><a href="#">Bangles</a></li>
+            <li><Link to="/"><i className="fa-solid fa-xmark"></i></Link></li>
+            <li><Link to="/" >Home</Link></li>
+            <li><Link to="/bracelets">Bracelets & Bangles</Link></li>
+            <li><Link to="necklace" >Necklace</Link></li>
+            <li><Link  to="earings">earings</Link></li>
+            <li><Link to="rings">rings</Link></li>
           </ul>
           
         </div>
@@ -52,16 +54,21 @@ export default function Navbar(){
     <div className="collapse navbar-collapse" >
       <ul className="navbar-nav" >
         <li className="nav-item">
-          <a className="nav-link " aria-current="page" href="#">Home</a>
+          <Link className="nav-link " aria-current="page" to="/">Home</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">products</a>
+          <Link className="nav-link" to="/bracelets">Bracelets & Bangles</Link>
+          
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">necklace</a>
+          <Link className="nav-link" to="/necklace">Necklace</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">bangles</a>
+          <Link className="nav-link" to="/earings">Earings</Link>
+
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/rings">rings</Link>
         </li>
         
     
@@ -94,19 +101,23 @@ export default function Navbar(){
     
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0" >
-        <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">Home</a>
+       <li className="nav-item">
+          <Link className="nav-link " aria-current="page" to="/">Home</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">products</a>
+          <Link className="nav-link" to="/bracelets">Bracelets & Bangles</Link>
+          
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">necklace</a>
+          <Link className="nav-link" to="/necklace">Necklace</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">bangles</a>
+          <Link className="nav-link" to="/earings">Earings</Link>
+
         </li>
-        
+        <li className="nav-item">
+          <Link className="nav-link" to="/rings">rings</Link>
+        </li> 
     
             
       </ul>
