@@ -92,7 +92,8 @@
     background-color: #693994;
     border-radius: 5rem;
     width: 70%;
-    margin: 5rem auto;
+    margin: 1rem auto;
+    
   }
 
   .logo {
@@ -110,26 +111,35 @@
 @media screen and (min-width: 1100px) {
   .laptop-nav {
     display: block;
-    width: 70%;
-    margin-left: 10%;
+    width: 70vw;
+    height: 7vh;
+    margin-left: 3rem;
+    margin-top: 1%;
     background-color: #693994;
     border-radius: 5rem;
-    text-align: center;
+    
+    
+  }
+  .nav-container{
+    margin-left: 1rem;
+    
   }
 
   .laptop-nav .nav-link {
     color: white !important;
     font-size: 1.1rem;
+    margin-top: -0.5rem;
   }
 
+
   .logo {
-    height: 4rem;
-    width: 4rem;
+    height: 7.5vh;
+    width: 4%;
     border: 2px solid #693994;
     border-radius: 50%;
     position: absolute;
-    top: 1%;
-    right: 10rem;
+    top: 0;
+    right: 10%;
   }
 
   .mobile-nav,

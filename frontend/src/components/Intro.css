@@ -1,16 +1,20 @@
-@media screen and (min-width :601px) {
+@media screen and (min-width :1024px) {
     video{
-    height: 40%;
-    width: 100vh;
+    width: 100%;
+    height: 70vh;
     border: 2px solid rgb(247, 72, 247);
     border-radius: 5rem;
     object-fit: cover;
+    margin-left: -2rem;
+    
     
 }
 .info{
     font-size: 2rem;
     color:  rgb(247, 72, 247);
-    padding-top: 10%;
+    padding-top:3rem;
+    margin-left: 40rem;
+    margin-top: -23rem;
 }
 .btn-outline-purple {
     border: 2px solid  rgb(247, 72, 247);;   /* Bootstrap purple */
@@ -24,7 +28,37 @@
 }
 
 }
+@media screen and (min-width: 601px) and (max-width:1023px) {
+    video{
+    width: 60vw;
+    height: 70vh;
+    border: 2px solid rgb(247, 72, 247);
+    border-radius: 5rem;
+    object-fit: cover;
+    margin-left: 5rem;
+}
+.info{
+    font-size: 1rem;
+    color:  rgb(247, 72, 247);
+    padding-top:3rem;
+    margin-left: 18rem;
+    margin-top: -23rem;
+}
+.intro{
+    margin-bottom: -23rem;
+}
+.btn-outline-purple {
+    border: 2px solid  rgb(247, 72, 247);;   /* Bootstrap purple */
+    color:  rgb(247, 72, 247);;
+    background-color: transparent;
+}
 
+.btn-outline-purple:hover {
+    background-color:  rgb(247, 72, 247);;
+    color: white;
+}
+
+}
 @media screen and (max-width:600px) {
     video{
     height: 20rem;
@@ -37,9 +71,10 @@
 }
 
 .info{
-    font-size: 2rem;
+    font-size: 1rem;
     color:  rgb(247, 72, 247);
-    padding-top: 5%;
+    padding-top: 2%;
+    margin-bottom: 5%;
    
 }
 .btn-outline-purple {
@@ -49,7 +84,7 @@
 }
 
 .btn-outline-purple:hover {
-    background-color:  rgb(247, 72, 247);;
+    background-color:  rgb(247, 72, 247);
     color: white;
 }
 }
@@ -61,7 +96,8 @@
       }
       .info{
         width: 100%;
-        margin-top: -80%;
+        margin-top: -95%;
         height: 50%;
+        
       }
 }
