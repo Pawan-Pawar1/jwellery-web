@@ -1,0 +1,138 @@
+@media screen and (min-width :601px) {
+    .cont-bracelet{
+  
+    text-align: center;
+    margin-top: 3rem;
+    margin-left: 4rem;
+    background-color: rgb(211, 208, 214);
+    border: 2px solid rgb(247, 72, 247);
+    border-radius:5rem;
+    height:20rem;
+
+    
+    
+}
+.ring-obj{
+    object-fit:cover;
+    height: 100%;
+    
+}
+.ring-container {
+    height: 100%; 
+    
+}
+img{
+  margin-left: -4%;    
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  border-radius:5rem;
+  
+    
+}
+
+.btn-outline-pink {
+    border: 2px solid  rgb(247, 72, 247);;   /* Bootstrap purple */
+    color:  rgb(247, 72, 247);
+    background-color: transparent;
+    margin-left: -3rem;
+    margin-top: 1rem;
+}
+.btn-outline-pink:hover {
+    background-color:  rgb(247, 72, 247);
+    color: white;
+}
+
+.bracelet-slider {
+  overflow: hidden;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.slider-track {
+  display: flex;
+  width: calc(6.5rem * 8); /* 8 images */
+  animation: scrollLeft 10s ease-in-out infinite;
+  margin-top: 2rem;
+  
+}
+
+.slider-track img {
+  width: 6.5rem;
+  height: 6.5rem;
+  object-fit: cover;
+  margin-right: 1rem;
+  border-radius: 1rem;
+  margin: 1.5rem;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  
+  100%{
+    transform: translateX(-100%);
+  }
+}
+.mob-block{
+  display: none;
+}
+
+}
+
+
+@media screen and (max-width:600px) {
+    .cont-bracelet{
+      display: none;
+    }
+    .back-img{
+      z-index:1;
+      border-radius: 5rem;
+    }
+    .front-img{
+      height: 5.6rem;
+      width: 5.6rem;
+      z-index: 2;
+      padding: 0.5rem;
+      position: relative;
+      top: -10rem;
+      left: 4.5rem;
+      border-radius: 2rem;
+      object-fit: fill;
+      animation: scrollLeft 10s ease-in-out infinite;
+        }
+
+        .btn-outline-pink {
+    border: 2px solid  rgb(247, 72, 247);;   /* Bootstrap purple */
+    color:  rgb(247, 72, 247);
+    background-color: transparent;
+    margin-left: 13rem;
+    margin-top: -17rem;
+    height: 3rem;
+}
+.btn-outline-pink:hover {
+    background-color:  rgb(247, 72, 247);
+    color: white;
+}
+
+
+@keyframes scrollLeft {
+ 0%{
+     opacity: 0.3;
+ }
+ 25%{
+  opacity: 0.5;
+ }
+ 50%{
+  opacity: 0.7;
+ }
+ 75%{
+  opacity: 0.9;
+ }
+ 100%{
+  opacity: 1;
+ }
+
+}
+}

@@ -7,17 +7,18 @@ export default function Intro() {
       <div className="row">
 
         {/* Video column */}
-        <div className="col-sm-12 col-md-12 col-xl-8 order-1">
+        <div className="col-sm-12 col-md-7 col-xl-7 order-1">
           <video autoPlay loop muted>
             <source src="/vedeos/intro.mp4" type="video/mp4" />
           </video>
         </div>
 
         {/* Text column */}
-        <div className="col-sm-12 col-md-12 col-xl-4 text-center info order-2">
+        <div className="col-sm-12 col-md-5 col-xl-5 text-center info order-2">
           Since 1971
           <br />
-          most trusted shop in Hingoli
+          most trusted 
+          <br></br>jwellery shop in Hingoli
           <form action="#">
             <button type="button" className="btn btn-outline-purple mt-3">
               explore

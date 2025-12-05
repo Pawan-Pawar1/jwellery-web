@@ -45,14 +45,14 @@ export default function Navbar(){
 
 {/* navbar for laptop and desktop screen */}
 
-      <div className="container text-center mt-4 laptop-nav">
-  <div className="row">
+      <div className="container text-center mt-4 nav-container">
+  <div className="row laptop-nav">
     <div className="col-8 ">
         <nav className="navbar navbar-expand-lg ">
   <div className="container-fluid">
     
     <div className="collapse navbar-collapse" >
-      <ul className="navbar-nav" >
+      <ul className="navbar-nav " >
         <li className="nav-item">
           <Link className="nav-link " aria-current="page" to="/">Home</Link>
         </li>
