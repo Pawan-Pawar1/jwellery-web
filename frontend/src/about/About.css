@@ -1,0 +1,10 @@
+.privacy-container{
+    margin-top: 3rem;
+   width: 80vw;
+   background-color: rgb(199, 197, 197);
+   border-radius: 3rem;
+   padding: 3rem;
+}
+.main-heading{
+    text-align: center;
+}

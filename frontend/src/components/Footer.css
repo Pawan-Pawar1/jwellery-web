@@ -1,0 +1,11 @@
+.footer-links{
+
+    text-decoration: none;
+}
+.footer-links:hover{
+   text-decoration: underline;
+
+}
+.social-media{
+    margin-left: 0.8rem;
+}

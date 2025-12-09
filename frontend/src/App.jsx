@@ -5,6 +5,11 @@ import Bracelets from './catagory/Bracelets'
 import  Earings from './catagory/Earings'
 import Rings from './catagory/Rings'
 import Necklace from './catagory/Necklace'
+import About from './components/Footer'
+import PrivacyPolicy from './about/PrivacyPolicy'
+import TermsAndConditions from './about/TermsAndConditions'
+import HelpAndFAQ from './about/Help'
+import AboutUs from './about/AboutUs'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   
@@ -19,8 +24,12 @@ function App() {
              <Route path='/necklace' element={<Necklace/>} /> 
              <Route path='/earings' element={<Earings/>} /> 
              <Route path='/rings' element={<Rings/>} /> 
-             
+             <Route path='/terms' element={<TermsAndConditions/>}/>
+             <Route path='/privacy' element={<PrivacyPolicy/>}/>
+             <Route path='/help' element={<HelpAndFAQ/>}/>
+             <Route path='/about' element={<AboutUs/>}/>
          </Routes>
+         <About />
     </BrowserRouter>
     </>
   )

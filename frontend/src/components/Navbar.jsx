@@ -19,7 +19,7 @@ export default function Navbar(){
         <div className="mobile-menu-page animate">
          
           <ul>
-            <li><Link to="/"><i className="fa-solid fa-xmark"></i></Link></li>
+            <li><i className="fa-solid fa-xmark"></i></li>
             <li><Link to="/" >Home</Link></li>
             <li><Link to="/bracelets">Bracelets & Bangles</Link></li>
             <li><Link to="necklace" >Necklace</Link></li>
