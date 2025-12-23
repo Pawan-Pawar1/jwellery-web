@@ -2,6 +2,7 @@ import './App.css'
 import Home from './components/Home'
 import Navbar from './components/Navbar'
 import Bracelets from './catagory/Bracelets'
+import BraceletsFile from './catagory/BraceletsFile'
 import  Earings from './catagory/Earings'
 import Rings from './catagory/Rings'
 import Necklace from './catagory/Necklace'
@@ -20,7 +21,9 @@ function App() {
          <Navbar/>
          <Routes>
              <Route path="/" element={<Home/>} />
-             <Route path='/bracelets' element={<Bracelets/>} /> 
+             <Route path='/bracelets' element={<Bracelets/>} > 
+                <Route path='file' element={<BraceletsFile/>}></Route>
+             </Route>
              <Route path='/necklace' element={<Necklace/>} /> 
              <Route path='/earings' element={<Earings/>} /> 
              <Route path='/rings' element={<Rings/>} /> 
@@ -28,6 +31,7 @@ function App() {
              <Route path='/privacy' element={<PrivacyPolicy/>}/>
              <Route path='/help' element={<HelpAndFAQ/>}/>
              <Route path='/about' element={<AboutUs/>}/>
+
          </Routes>
          <About />
     </BrowserRouter>

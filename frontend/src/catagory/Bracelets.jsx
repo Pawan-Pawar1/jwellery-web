@@ -1,7 +1,16 @@
-import React from "react";
-
+import React, { use } from "react";
+import {Link,Outlet,useLocation } from "react-router-dom"
 export default function Rings(){
+    const location =useLocation();
+    const isBracelet=location.pathname==="/bracelets";
     return(
-        <h1>hi, am Bracelets & Bangles</h1>
+        
+        <>
+         {isBracelet&&(<Link to="file">
+         <button className="btn btn-primary">add photo</button>
+         
+         </Link>)}
+         <Outlet/>
+        </>
     )
 }
