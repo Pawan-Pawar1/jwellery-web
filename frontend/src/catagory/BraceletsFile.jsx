@@ -1,37 +1,111 @@
 import React from "react";
-export default function BraceletsFile(){
-    return(
-        <>
-         <form encType="multipart/form-data">
-  <div class="mb-3">
-    <label for="productName" class="form-label">name of the prduct</label>
-    <input type="text" name="productName" class="form-control" id="productName" aria-describedby="emailHelp"/>
-    
-  </div>
-  <div class="mb-3">
-    <label for="price" class="form-label">price of the prduct</label>
-    <input type="number" name="price" class="form-control" id="price" />
-    
-  </div>
-  <div class="mb-3">
-    <label for="weight" class="form-label">weight of the prduct</label>
-    <input type="email" name="weight" class="form-control" id="weight" />
-    
-  </div>
- <div class="mb-3">
-    <label for="material" class="form-label">material of the prduct</label>
-    <input type="text" name="material" class="form-control" id="material" />
-    
-  </div>
-  <div class="mb-3">
-    <label for="images" class="form-label">upload the product image</label>
-    <input type="file" name="image" class="form-control" id="images" />
-    
-  </div>
-  
-  
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-        </>
-    )
+import axios from "axios";
+import {useNavigate } from "react-router-dom"
+export default function BraceletsFile() {
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+
+    try {
+      const res = await axios.post(
+        `${BACKEND_URL}/file`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      alert(res.data);
+      e.target.reset();
+          navigate("/bracelets");
+
+    } catch (error) {
+      console.error("Upload error:", error);
+    }
+  };
+
+  return (
+    <>
+      <form
+        encType="multipart/form-data"
+        onSubmit={handleSubmit}
+        className="container mt-4"
+      >
+        <div className="mb-3">
+          <label htmlFor="name" className="form-label">
+            Name of the product
+          </label>
+          <input
+            type="text"
+            name="name"
+            className="form-control"
+            id="name"
+            required
+          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="price" className="form-label">
+            Price of the product
+          </label>
+          <input
+            type="number"
+            name="price"
+            className="form-control"
+            id="price"
+            required
+          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="weight" className="form-label">
+            Weight of the product
+          </label>
+          <input
+            type="number"
+            name="weight"
+            className="form-control"
+            id="weight"
+            required
+          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="material" className="form-label">
+            Material of the product
+          </label>
+          <input
+            type="text"
+            name="material"
+            className="form-control"
+            id="material"
+            required
+          />
+        </div>
+
+        <div className="mb-3">
+          <label htmlFor="image" className="form-label">
+            Upload product image
+          </label>
+          <input
+            type="file"
+            name="image"
+            className="form-control"
+            id="image"
+            accept="image/*"
+            required
+          />
+        </div>
+
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
+      </form>
+    </>
+  );
 }

@@ -21,9 +21,9 @@ function App() {
          <Navbar/>
          <Routes>
              <Route path="/" element={<Home/>} />
-             <Route path='/bracelets' element={<Bracelets/>} > 
-                <Route path='file' element={<BraceletsFile/>}></Route>
-             </Route>
+             <Route path='/bracelets' element={<Bracelets/>} /> 
+                <Route path='/bracelets/addBracelets' element={<BraceletsFile/>}></Route>
+             
              <Route path='/necklace' element={<Necklace/>} /> 
              <Route path='/earings' element={<Earings/>} /> 
              <Route path='/rings' element={<Rings/>} /> 

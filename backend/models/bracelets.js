@@ -20,8 +20,8 @@ const braceletsSchema=new mongoose.Schema(
             enum:["gold","silver"],
         },
         images:{
-             type:String,
-             required:true,
+             url:String,
+             filename:String,
         }
     }
 );
