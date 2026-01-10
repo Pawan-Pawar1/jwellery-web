@@ -15,4 +15,7 @@ router.post(
 router.get("/",
   braceletController.getBracelet
 )
+router.get("/:id",
+  braceletController.getOneBracelet
+)
 module.exports = router;

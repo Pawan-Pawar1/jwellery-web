@@ -35,7 +35,7 @@ export default function Navbar(){
             </div>
             <div className="col-11 mt-3 ">
               <img 
-                src="logo.png"
+                src="/logo/logo.png"
                alt="Logo" 
                 className=" logo" />
             </div>
@@ -84,7 +84,7 @@ export default function Navbar(){
   </div>  
   <div className="col-4 ">
            <img 
-      src="logo.png"
+      src="/logo/logo.png"
        alt="Logo" 
         className="mt-4 logo" />
   </div>
@@ -131,7 +131,7 @@ export default function Navbar(){
   </div>  
   <div className="col-3 ">
            <img 
-      src="logo.png"
+      src="/logo/logo.png"
        alt="Logo" 
         className="mt-3 logo" />
   </div>

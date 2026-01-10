@@ -1,8 +1,11 @@
-import React from "react";
+import React,{useState} from "react";
 import axios from "axios";
 import {useNavigate } from "react-router-dom"
+
+import Loader from "../loader/Loader";
 export default function BraceletsFile() {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -10,8 +13,9 @@ export default function BraceletsFile() {
     const formData = new FormData(e.target);
 
     try {
+      setLoading(true);   
       const res = await axios.post(
-        `${BACKEND_URL}/file`,
+        `${BACKEND_URL}/bracelets/file`,
         formData,
         {
           headers: {
@@ -26,9 +30,16 @@ export default function BraceletsFile() {
 
     } catch (error) {
       console.error("Upload error:", error);
-    }
+    } finally {
+    setLoading(false);            // 🔥 stop loader
+  }
   };
 
+  if (loading) {
+  return (
+         <Loader />
+  );
+}
   return (
     <>
       <form

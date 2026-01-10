@@ -36,3 +36,8 @@ module.exports.getBracelet=async (req,res)=>{
     console.log(bracelets);
     res.send(bracelets);
 }
+module.exports.getOneBracelet=async (req,res)=>{
+  const id=req.params.id;
+  const bracelet=await Bracelet.findById(id);
+  res.json(bracelet);
+}
