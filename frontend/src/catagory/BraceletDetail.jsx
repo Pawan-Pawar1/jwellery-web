@@ -10,11 +10,24 @@ export default function BraceletDetails() {
   const [bracelet, setBracelet] = useState(null);
   const [loading,setLoading]=useState(true);
 
+
+const  handleDelete= async(id)=>{
+    if (!window.confirm("Are you sure you want to delete?")) return;
+       try{
+        await axios.delete(`${BACKEND_URL}/products/${id}`);
+         navigate("/bracelets"); 
+       }catch(err){
+        console.log(err);
+        alert("deleting failed");
+       }
+}
+
+
   useEffect(() => {
     const fetchBracelet = async () => {
       try {
        
-        const res = await axios.get(`${BACKEND_URL}/bracelets/${id}`);
+        const res = await axios.get(`${BACKEND_URL}/products/${id}`);
         setBracelet(res.data);
       } catch (err) {
         console.error(err);
@@ -54,6 +67,11 @@ export default function BraceletDetails() {
             >
               Edit Bracelet
             </button>
+
+            <button className="btn btn-danger mt-3"
+             onClick={() => handleDelete(bracelet._id)}>
+  Delete
+</button>
         
         </div>
       </div>

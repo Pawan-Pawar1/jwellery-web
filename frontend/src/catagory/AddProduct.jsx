@@ -15,7 +15,7 @@ export default function BraceletsFile() {
     try {
       setLoading(true);   
       const res = await axios.post(
-        `${BACKEND_URL}/bracelets/file`,
+        `${BACKEND_URL}/products/file`,
         formData,
         {
           headers: {
@@ -26,7 +26,7 @@ export default function BraceletsFile() {
 
       alert(res.data);
       e.target.reset();
-          navigate("/bracelets");
+          navigate("/");
 
     } catch (error) {
       console.error("Upload error:", error);
@@ -59,7 +59,36 @@ export default function BraceletsFile() {
             required
           />
         </div>
+        <div className="mb-3">
+          <select name="category" className="form-select" aria-label="Default select example" required>
+             <option >select the catagory</option>
+                 <option value="ring">Ring</option>
+                 <option value="bracelet">Bracelet</option>
+                 <option value="earring">earring</option>
+                 <option value="necklace">necklace</option>
+              </select>
+        </div>
 
+
+             <div className="mb-3 form-check">
+              <label className="form-check-label">
+  <input type="checkbox" name="isTrending" 
+  className="form-check-input" style={{"marginLeft":"1rem"}}/> 
+  Trending
+</label >
+
+<label className="form-check-label">
+  <input type="checkbox" name="isNew" style={{"marginLeft":"6rem"}}
+  className="form-check-input" />
+   New Arrival
+</label>
+
+<label className="form-check-label">
+  <input type="checkbox" name="isBestSeller" style={{"marginLeft":"6rem"}}
+  className="form-check-input" /> 
+  Best Seller
+</label>
+             </div>
         <div className="mb-3">
           <label htmlFor="price" className="form-label">
             Price of the product
@@ -86,17 +115,13 @@ export default function BraceletsFile() {
           />
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="material" className="form-label">
-            Material of the product
-          </label>
-          <input
-            type="text"
-            name="material"
-            className="form-control"
-            id="material"
-            required
-          />
+     <div className="mb-3">
+          <select name="material" className="form-select" aria-label="Default select example" required>
+             <option >select the material(gold/silver)</option>
+                 <option value="gold">gold</option>
+                 <option value="silver">silver</option>
+                 
+              </select>
         </div>
 
         <div className="mb-3">
@@ -112,6 +137,12 @@ export default function BraceletsFile() {
             required
           />
         </div>
+        <div class="form-floating mb-3">
+  <textarea class="form-control" placeholder="Leave a discription  here"
+   id="floatingTextarea"
+   name="description"></textarea>
+  <label for="floatingTextarea">discription</label>
+</div>
 
         <button type="submit" className="btn btn-primary">
           Submit

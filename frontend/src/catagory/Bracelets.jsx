@@ -13,7 +13,7 @@ export default function Bracelets(){
     const fetchBracelets= async ()=>{
        try{
         setLoading(true);
-        const res = await axios.get(`${BACKEND_URL}/bracelets`)
+        const res = await axios.get(`${BACKEND_URL}/products`)
     console.log(res.data);
     setData(res.data);
        }catch(err){
@@ -41,13 +41,25 @@ if(loading){
     return(
         
         <>
+        <h3>latest</h3>
+
+        <h3>trending</h3>
+
+
+
+
+
+
+
+
+
         <div className="container-latest">
   <div className="row">
-
+              <h3 className=" mt-3">Best sellers</h3>
 
          {data.map(item => (
       <div key={item._id} 
-      className="col-md-4 col-sm-6 col-lg-3 mt-4 p-0 imp-card"
+      className="col-md-12 col-sm-12 col-lg-12 mt-1 p-0 imp-card"
       onClick={()=>
         navigate(`/bracelets/${item._id}`)
       }
@@ -68,10 +80,10 @@ if(loading){
       </div>
     ))}
           </div>
-         <div className="text-center mt-4">
+         <div className=" col-md-12 col-sm-12 col-lg-12 braceletBtn mt-4">
     <button
       className="btn btn-primary"
-      onClick={() => navigate("/bracelets/addBracelets")}
+      onClick={() => navigate("/bracelets/addFile")}
     >
       Add Photo
     </button>

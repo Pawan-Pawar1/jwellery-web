@@ -4,18 +4,21 @@ const multer = require("multer");
 const { storage } = require("../config/cloudConfig");
 const upload = multer({ storage });
 
-const braceletController = require("../controllers/braceletController");
+const productController = require("../controllers/ProductController");
 
 router.post(
   "/file",
   upload.single("image"),
-  braceletController.createBracelet
+  productController.createProduct
 );
 
 router.get("/",
-  braceletController.getBracelet
+  productController.getProduct
 )
 router.get("/:id",
-  braceletController.getOneBracelet
+  productController.getOneProduct
+)
+router.delete("/:id",
+ productController.deleteProduct
 )
 module.exports = router;
