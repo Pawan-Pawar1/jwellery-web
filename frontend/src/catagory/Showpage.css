@@ -1,0 +1,38 @@
+.card{
+    width:13rem;
+    height: 2rem;
+    padding-left: 0.5rem;
+    border-radius: 1rem;
+}
+
+.card-text{
+    color: rgb(245, 61, 245);
+}
+.card-img-top{
+    object-fit: cover;
+    height: 7rem;
+    width: 13rem;
+    border-radius: 1rem;
+    
+}
+.view-detail{
+    border: 1px solid purple;
+   
+     opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(10px);
+}
+.view-detail:hover{
+    background-color: rgb(95, 43, 95);
+    color: white;
+}
+.card:hover .view-detail{
+    
+     opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.card:hover{
+    height: auto;
+}

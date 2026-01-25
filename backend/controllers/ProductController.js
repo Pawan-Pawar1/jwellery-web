@@ -1,5 +1,5 @@
 const Product = require("../models/product");
-const cloudinary = require("../config/cloudConfig");
+const {cloudinary} = require("../config/cloudConfig");
 module.exports.createProduct = async (req, res) => {
   try {
     if (!req.file) {
@@ -37,9 +37,23 @@ module.exports.createProduct = async (req, res) => {
 };
 
 module.exports.getProduct=async (req,res)=>{
-    const product = await Product.find();
+  try{ const {category,isTrending, isNew, isBestSeller} = req.query;
+    const filter={};
+    if(category) filter.category=category;
+    if (isTrending !== undefined) 
+      filter.isTrending = isTrending === "true";
+    if (isNew !== undefined) filter.isNew = isNew === "true";
+    if (isBestSeller !== undefined)
+      filter.isBestSeller = isBestSeller === "true";
+    const product = await Product.find(filter);
     
-    res.send(product);
+
+     res.status(200).json(product);
+    }catch(err){
+          console.error("PRODUCT FETCH ERROR:", err);
+res.status(500).json({ error: err.message });
+    }
+    
 }
 module.exports.getOneProduct=async (req,res)=>{
   const id=req.params.id;
@@ -52,9 +66,9 @@ module.exports.deleteProduct=async(req,res)=>{
    if (!product) {
       return res.status(404).json({ message: "Item not found" });
     }
-
-    if(product.images?.filename){
-       await cloudinary.uploader.destroy(product.images.filename);
+            
+     if (product.images && product.images.filename) {
+      await cloudinary.uploader.destroy(product.images.filename);
     }
 
      await Product.findByIdAndDelete(id);

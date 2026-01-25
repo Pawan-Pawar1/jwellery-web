@@ -3,8 +3,8 @@ import Home from './components/Home'
 import Navbar from './components/Navbar'
 import Bracelets from './catagory/Bracelets'
 import AddProduct from './catagory/AddProduct'
-import BraceletDetail from './catagory/BraceletDetail'
-
+import ProductDetail from './catagory/ProductDetail'
+import EditProduct from './catagory/EditProduct';
 import  Earings from './catagory/Earings'
 import Rings from './catagory/Rings'
 import Necklace from './catagory/Necklace'
@@ -24,9 +24,9 @@ function App() {
          <Routes>
              <Route path="/" element={<Home/>} />
              <Route path='/bracelets' element={<Bracelets/>} /> 
-             <Route path='/bracelets/:id' element={<BraceletDetail/>}/>
-                <Route path='/bracelets/addFile' element={<AddProduct/>}></Route>
-             
+             <Route path='/product/:id' element={<ProductDetail/>}/>
+             <Route path='/bracelets/addFile' element={<AddProduct/>}></Route>
+             <Route path='/product/:id/edit' element={<EditProduct />} />
              <Route path='/necklace' element={<Necklace/>} /> 
              <Route path='/earings' element={<Earings/>} /> 
              <Route path='/rings' element={<Rings/>} /> 

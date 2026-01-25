@@ -1,95 +1,83 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./Bracelets.css"
+import "./Bracelets.css";
 import Loader from "../loader/Loader";
+import { useNavigate } from "react-router-dom";
+import ShowPage from "./Showpage.jsx";
+
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-import {Link,Outlet,useLocation, useNavigate } from "react-router-dom"
-export default function Bracelets(){
-    const [data, setData]=useState([]);
-    const [loading, setLoading] = useState(false);
-    const navigate=useNavigate();
-    const location =useLocation();
-    const isBracelet=location.pathname==="/bracelets";
-    const fetchBracelets= async ()=>{
-       try{
-        setLoading(true);
-        const res = await axios.get(`${BACKEND_URL}/products`)
-    console.log(res.data);
-    setData(res.data);
-       }catch(err){
-        console.error(err)
-       }finally{
-        setLoading(false);
-       }
+
+export default function Bracelets() {
+  const [bestSeller, setBestSeller] = useState([]);
+  const [newArrivals, setNewArrivals] = useState([]);
+  const [trending, setTrending]=useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+
+  const fetchBracelets = async () => {
+    try {
+      setLoading(true);
+
+      const [bestRes, newRes,trendRes] = await Promise.all([
+        axios.get(
+          `${BACKEND_URL}/products?category=bracelet&isBestSeller=true`
+        ),
+        axios.get(
+          `${BACKEND_URL}/products?category=bracelet&isNew=true`
+        ),
+        axios.get(
+          `${BACKEND_URL}/products?category=bracelet&isTrending=true`
+        )
+      ]);
+
+      setBestSeller(bestRes.data);
+      setNewArrivals(newRes.data);
+      setTrending(trendRes.data);
+    } catch (err) {
+      console.error("FETCH ERROR:", err);
+    } finally {
+      setLoading(false);
     }
-    useEffect(() => {
-  fetchBracelets();
-}, []);
+  };
 
+  useEffect(() => {
+    fetchBracelets();
+  }, []);
 
-if(loading){
-  return(
-    <Loader />
-  )
-}
+  if (loading) return <Loader />;
 
+  return (
+    <>
 
+        {/* Trending */}
+        <h3 className="mt-4 heading">Trending</h3>
 
+        <ShowPage products={trending}  />
+ <hr />
 
+      {/* LATEST */}
+      <h3 className="mt-4 heading">New Arrivals</h3>
 
+      
+            <ShowPage  products={newArrivals}  />
+  
+       <hr />
 
-    return(
-        
-        <>
-        <h3>latest</h3>
+      {/* BEST SELLERS */}
+      <h3 className="mt-4 heading">Best Sellers</h3>
 
-        <h3>trending</h3>
-
-
-
-
-
-
-
-
-
-        <div className="container-latest">
-  <div className="row">
-              <h3 className=" mt-3">Best sellers</h3>
-
-         {data.map(item => (
-      <div key={item._id} 
-      className="col-md-12 col-sm-12 col-lg-12 mt-1 p-0 imp-card"
-      onClick={()=>
-        navigate(`/bracelets/${item._id}`)
-      }
-      style={{cursor:"pointer"}}
-      >
-        <div className="card bracelet-card">
-    <img
-      src={item.images?.url}
-      alt={item.name}
-      className="bracelet-img"
-    />
-
-    <div className="card-body ">
-      <h5>{item.name}</h5>
-      <p> ₹{item.price} | {item.weight}g</p>
-    </div>
-  </div>
+                 <ShowPage    products={bestSeller}  />
+<hr />
+      {/* ADD BUTTON */}
+      <div className="braceletBtn mt-4 text-center">
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/bracelets/addFile")}
+        >
+          Add Product
+        </button>
       </div>
-    ))}
-          </div>
-         <div className=" col-md-12 col-sm-12 col-lg-12 braceletBtn mt-4">
-    <button
-      className="btn btn-primary"
-      onClick={() => navigate("/bracelets/addFile")}
-    >
-      Add Photo
-    </button>
-  </div>
-       </div>
-         
-        </>
-    )
+    </>
+  );
 }

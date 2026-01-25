@@ -4,10 +4,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import Loader from "../loader/Loader";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-export default function BraceletDetails() {
+export default function ProductDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [bracelet, setBracelet] = useState(null);
+  const [product, setProduct] = useState(null);
   const [loading,setLoading]=useState(true);
 
 
@@ -15,7 +15,7 @@ const  handleDelete= async(id)=>{
     if (!window.confirm("Are you sure you want to delete?")) return;
        try{
         await axios.delete(`${BACKEND_URL}/products/${id}`);
-         navigate("/bracelets"); 
+         navigate(`/bracelets/${id}`); 
        }catch(err){
         console.log(err);
         alert("deleting failed");
@@ -24,18 +24,18 @@ const  handleDelete= async(id)=>{
 
 
   useEffect(() => {
-    const fetchBracelet = async () => {
+    const fetchProduct = async () => {
       try {
        
         const res = await axios.get(`${BACKEND_URL}/products/${id}`);
-        setBracelet(res.data);
+        setProduct(res.data);
       } catch (err) {
         console.error(err);
       }finally{
         setLoading(false);
       }
     };
-    fetchBracelet();
+    fetchProduct();
   }, [id]);
 
   if (loading){ 
@@ -49,27 +49,29 @@ const  handleDelete= async(id)=>{
       <div className="row">
         <div className="col-md-8 col-sm-12">
         <img
-          src={bracelet.images?.url}
-          className="card-img-top"
-          alt={bracelet.name}
+          src={product.images?.url}
+          style={{"height":"80%", "width":"80%"}}
+          alt={product.name}
         />
         </div>
         <div className="col-md-4 col-sm-12">
-          <h3>{bracelet.name}</h3>
-          <p><b>Price:</b> ₹{bracelet.price}</p>
-          <p><b>Weight:</b> {bracelet.weight} g</p>
-          <p><b>Description:</b> {bracelet.description}</p>
+          <h3>{product.name}</h3>
+          <p><b>Price:</b> ₹{product.price}</p>
+          <p><b>Weight:</b> {product.weight} g</p>
+          <p><b>Material:</b> {product.material}</p>
+          <p><b>Description:</b> {product.description}</p>
 
           
             <button
               className="btn btn-warning mt-3"
-              onClick={() => navigate(`/bracelets/edit/${bracelet._id}`)}
+              onClick={() => navigate(`/product/${product._id}/edit`)}
             >
               Edit Bracelet
             </button>
 
             <button className="btn btn-danger mt-3"
-             onClick={() => handleDelete(bracelet._id)}>
+            style={{"marginLeft":"2rem"}}
+             onClick={() => handleDelete(product._id)}>
   Delete
 </button>
         
