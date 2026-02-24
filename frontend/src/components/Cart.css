@@ -1,0 +1,38 @@
+.cart-box {
+  padding: 1rem;
+}
+
+.cart-item {
+  display: flex;
+  gap: 1rem;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.cart-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5%;
+  margin-left: 0.5rem;
+}
+
+.cart-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cart-title {
+  font-weight: bold;
+}
+
+.cart-price {
+  color: gold;
+}
+
+.cart-qty {
+  font-size: 14px;
+}

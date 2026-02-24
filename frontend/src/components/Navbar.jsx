@@ -1,12 +1,24 @@
-import React,{useState} from "react";
+import React,{useContext, useState} from "react";
 import "./Navbar.css"
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
+import AuthContainer from "./AuthContainer";
+import { AuthContext } from "../context/AuthContext";
+import { motion, AnimatePresence } from "framer-motion";
+import ProfilePopup from "./ProfilePopup";
 export default function Navbar(){
-
+ const { user, loading } = useContext(AuthContext);
+ console.log(user);
   const[open, setOpen]=useState(false);
+  const[authClick, setAuthClick]=useState(false);
+  
+  const firstLetter =  user?.name ? user.name.charAt(0).toUpperCase() : "";
   function menu(){
     setOpen(!open);
   }
+const navigate=useNavigate();
+ 
+ 
+
     return(
           <>
 {/* navbar if mobile screen */}
@@ -33,12 +45,23 @@ export default function Navbar(){
 
                 
             </div>
-            <div className="col-11 mt-3 ">
+            <div className="col-7 mt-3 ">
               <img 
                 src="/logo/logo.png"
                alt="Logo" 
                 className=" logo" />
             </div>
+       
+  {user  ? (
+    <div className="avatar-circle" onClick={()=>navigate("/profile")}>
+      {firstLetter}
+      
+    </div>
+  ) : (
+     <div className="col-2" onClick={() => setAuthClick(prev => !prev)}>
+    <i className="fa-solid fa-circle-user login-icon"></i></div>
+  )}
+
         </div>
        </div>
 
@@ -82,12 +105,22 @@ export default function Navbar(){
 </nav> 
 
   </div>  
-  <div className="col-4 ">
+  <div className="col-2 ">
            <img 
       src="/logo/logo.png"
        alt="Logo" 
         className="mt-4 logo" />
+        
   </div>
+  {user  ? (
+    <div className="avatar-circle" onClick={()=>navigate("/profile")}>
+      {firstLetter}
+      
+    </div>
+  ) : (
+     <div className="col-2" onClick={() => setAuthClick(prev => !prev)}>
+    <i className="fa-solid fa-circle-user login-icon"></i></div>
+  )}
     
   </div>
 </div>
@@ -118,7 +151,7 @@ export default function Navbar(){
         <li className="nav-item">
           <Link className="nav-link" to="/rings">rings</Link>
         </li> 
-    
+           
             
       </ul>
 
@@ -126,20 +159,48 @@ export default function Navbar(){
       
     </div>
   </div>
+  
 </nav> 
 
   </div>  
-  <div className="col-3 ">
+  <div className="col-2 ">
+    
            <img 
       src="/logo/logo.png"
        alt="Logo" 
         className="mt-3 logo" />
   </div>
+   {user  ? (
+    <div className="avatar-circle" onClick={()=>navigate("/profile")}>
+      {firstLetter}
+      
+    </div>
+  ) : (
+     <div className="col-2" onClick={() => setAuthClick(prev => !prev)}>
+    <i className="fa-solid fa-circle-user login-icon"></i></div>
+  )}
+  
     
   </div>
 </div>
 
 
+
+
+<AnimatePresence>
+{
+authClick && 
+   <motion.div
+      className="auth-popup"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 12 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.2,ease: "easeOut" }}
+    >
+      <AuthContainer />
+    </motion.div>
+}
+</AnimatePresence>
     </>               
     )
 }

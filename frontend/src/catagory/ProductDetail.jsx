@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import Loader from "../loader/Loader";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export default function ProductDetails() {
@@ -9,8 +11,17 @@ export default function ProductDetails() {
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [loading,setLoading]=useState(true);
-
-
+    const {user}=useContext(AuthContext);
+const addToCart = async (productId) => {
+  await axios.post(
+    `${BACKEND_URL}/cart/add`,
+    {
+      userId: user._id,
+      productId
+    },
+    { withCredentials: true }
+  );
+};
 const  handleDelete= async(id)=>{
     if (!window.confirm("Are you sure you want to delete?")) return;
        try{
@@ -68,6 +79,10 @@ const  handleDelete= async(id)=>{
             >
               Edit Bracelet
             </button>
+            <button onClick={() => addToCart(product._id)} className="btn mt-3 btn-outline-success"
+                style={{"marginLeft":"2rem"}}>
+                     Add to Cart <i className="fa-solid fa-cart-arrow-down"></i>
+                  </button>
 
             <button className="btn btn-danger mt-3"
             style={{"marginLeft":"2rem"}}

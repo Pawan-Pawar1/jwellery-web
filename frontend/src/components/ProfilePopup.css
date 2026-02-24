@@ -1,0 +1,12 @@
+.profile-popup{
+    background-color: rgb(100, 80, 100);
+    color: white;
+    margin: 0 auto;
+    width: 60vw;
+    height: auto;
+}
+
+div .profile-btn{
+    width:5rem;
+    margin: 1rem;
+}

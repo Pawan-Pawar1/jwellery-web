@@ -214,6 +214,7 @@ export default function BraceletsFile() {
           name="image"
           className="form-control"
           accept="image/*"
+          
           onChange={handleChange}
         />
       </div>

@@ -1,6 +1,8 @@
 import './App.css'
 import Home from './components/Home'
 import Navbar from './components/Navbar'
+import Login from './components/Login'
+import SignUp from './components/SignUp'
 import Bracelets from './catagory/Bracelets'
 import AddProduct from './catagory/AddProduct'
 import ProductDetail from './catagory/ProductDetail'
@@ -13,6 +15,7 @@ import PrivacyPolicy from './about/PrivacyPolicy'
 import TermsAndConditions from './about/TermsAndConditions'
 import HelpAndFAQ from './about/Help'
 import AboutUs from './about/AboutUs'
+import ProfilePopup from './components/ProfilePopup'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   
@@ -23,9 +26,12 @@ function App() {
          <Navbar/>
          <Routes>
              <Route path="/" element={<Home/>} />
+             <Route path="/profile" element={<ProfilePopup/>} />
+             <Route path='/login' element={<Login/>}/>
+             <Route path='/signup' element={<SignUp/>}/>
              <Route path='/bracelets' element={<Bracelets/>} /> 
              <Route path='/product/:id' element={<ProductDetail/>}/>
-             <Route path='/bracelets/addFile' element={<AddProduct/>}></Route>
+             <Route path='/product/addFile' element={<AddProduct/>}></Route>
              <Route path='/product/:id/edit' element={<EditProduct />} />
              <Route path='/necklace' element={<Necklace/>} /> 
              <Route path='/earings' element={<Earings/>} /> 

@@ -1,0 +1,37 @@
+
+.auth-card {
+  width: 100%;
+  max-width: 700px ;   
+  margin-top: 1%;
+  border-radius: 18px;
+}
+
+
+.text-purple {
+  color: #6f42c1;
+}
+
+
+.form-control {
+  height: 48px;        
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+
+.btn-purple {
+  background-color: #6f42c1;
+  color: white;
+  border: none;
+  height: 50px;        
+  font-size: 17px;
+  border-radius: 10px;
+}
+
+.btn-purple:hover {
+  background-color: #59339d;
+}
+
+.card-body {
+  padding: 2.2rem !important;
+}

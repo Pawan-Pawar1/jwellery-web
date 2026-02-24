@@ -73,7 +73,7 @@ export default function Bracelets() {
       <div className="braceletBtn mt-4 text-center">
         <button
           className="btn btn-primary"
-          onClick={() => navigate("/bracelets/addFile")}
+          onClick={() => navigate("/product/addFile")}
         >
           Add Product
         </button>

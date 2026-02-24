@@ -60,6 +60,7 @@ module.exports.getOneProduct=async (req,res)=>{
   const product=await Product.findById(id);
   res.json(product);
 }
+
 module.exports.deleteProduct=async(req,res)=>{
   const {id}=req.params;
   const product= await Product.findById(id);
@@ -74,4 +75,60 @@ module.exports.deleteProduct=async(req,res)=>{
      await Product.findByIdAndDelete(id);
        res.status(200).json({ message: "Deleted successfully" });
 
+}
+
+module.exports.updateProduct=async(req,res)=>{
+  try{
+    const {id}=req.params;
+    const product = await Product.findById(id);
+    if(!product){
+      return res.status(404).json({message:"product not found"});
+    }
+    const {
+      name,
+      category,
+      price,
+      weight,
+      material,
+      description,
+      isTrending,
+      isNew,
+      isBestSeller,
+
+    }=req.body;
+   product.name = name ?? product.name;
+    product.category = category ?? product.category;
+    product.price = price ?? product.price;
+    product.weight = weight ?? product.weight;
+    product.material = material ?? product.material;
+    product.description = description ?? product.description;
+
+    // 🔹 IMPORTANT: checkbox handling (true/false)
+    product.isTrending = isTrending === "true" || isTrending === true;
+    product.isNew = isNew === "true" || isNew === true;
+    product.isBestSeller = isBestSeller === "true" || isBestSeller === true;
+
+    // 🔹 If new image uploaded
+    if (req.file) {
+      // delete old image from cloudinary
+      if (product.images?.filename) {
+        await cloudinary.uploader.destroy(product.images.filename);
+      }
+
+      product.images = {
+        url: req.file.path,        // secure_url
+        filename: req.file.filename, // public_id
+      };
+    }
+
+    await product.save();
+
+    res.status(200).json({
+      message: "Product updated successfully",
+      product,
+    });
+  } catch (err) {
+    console.error("UPDATE PRODUCT ERROR:", err);
+    res.status(500).json({ error: err.message });
+  }
 }

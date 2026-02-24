@@ -18,6 +18,10 @@ router.get("/",
 router.get("/:id",
   productController.getOneProduct
 )
+router.put("/:id",
+  upload.single("image"),
+  productController.updateProduct
+)
 router.delete("/:id",
  productController.deleteProduct
 )
