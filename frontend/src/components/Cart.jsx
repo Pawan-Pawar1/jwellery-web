@@ -7,6 +7,26 @@ import { Link } from "react-router-dom";
 export default function Cart() {
   const [items, setItems] = useState([]);
 
+ const deleteCart = async (itemId) => {
+  try {
+    const res = await axios.delete(
+      `${BACKEND_URL}/cart/delete/${itemId}`,
+      { withCredentials: true }
+    );
+
+    // If your backend returns { success: true, cart: [...] }
+    if (res.data.success) {
+      setItems(res.data.cart);
+    } else {
+      // Fallback: if it just returns the cart directly
+      setItems(res.data);
+    }
+  } catch (err) {
+    console.error("Error deleting item:", err);
+    alert("Could not remove item from cart");
+  }
+};
+
   useEffect(() => {
     const fetchCart = async () => {
       try {
@@ -35,21 +55,25 @@ export default function Cart() {
             
             
             <img
-              src={item.productId.images?.url || "/placeholder.png"}
-              alt={item.productId.name}
+              src={item.productId?.images?.url || "/placeholder.png"}
+              alt={item.productId?.name}
               className="cart-image"
             />
 
             
             <div className="cart-details">
-              <p className="cart-title">{item.productId.name}</p>
-              <p className="cart-price">{item.productId.material}</p>
-              <p className="cart-price">{item.productId.weight}g</p>
-              <p className="cart-price">{item.productId.discription}</p>
+              <p className="cart-title">{item.productId?.name}</p>
+              <p className="cart-price">{item.productId?.material}</p>
+              <p className="cart-price">{item.productId?.weight}g</p>
+              <p className="cart-price">{item.productId?.discription}</p>
               <p className="cart-qty">Qty: {item.quantity}</p>
                
-               <Link to={`/product/${item.productId._id}`} className="btn btn-outline-success">
-               view Detail</Link>
+               <Link to={`/product/${item.productId?._id}`} className="btn btn-outline-success">
+               view Detail</Link> <br />
+               <button 
+               className="btn btn-danger"
+               onClick={()=>deleteCart(item._id)}
+               >remove</button>
             </div>
                               
           </div>

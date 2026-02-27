@@ -50,3 +50,25 @@ module.exports.getCart=async(req, res)=>{
     res.status(500).json({ message: "Server error" });
   }
 }
+
+module.exports.removeCart = async (req, res) => {
+  try {
+    const itemId = req.params.id;
+    const userId = req.user._id;
+
+    const user = await User.findByIdAndUpdate(
+      userId,
+      { $pull: { cart: { _id: itemId } } },
+      { new: true }
+    ).populate("cart.productId");
+
+    // Filter out any null products that might still be lingering 
+    // This prevents the "Cannot read properties of null" error on the next load
+    user.cart = user.cart.filter(item => item.productId !== null);
+    await user.save();
+
+    res.status(200).json({ success: true, cart: user.cart });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
