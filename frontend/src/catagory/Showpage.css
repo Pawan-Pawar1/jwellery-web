@@ -2,7 +2,7 @@
     width:13rem;
     height: 2rem;
     padding-left: 0.5rem;
-    border-radius: 1rem;
+    border-radius: 1rem;  
 }
 
 .card-text{
@@ -13,6 +13,7 @@
     height: 7rem;
     width: 13rem;
     border-radius: 1rem;
+    margin-left:-4%;
     
 }
 .view-detail{
@@ -35,4 +36,26 @@
 }
 .card:hover{
     height: auto;
+}
+
+/* DEFAULT: Laptop & large screens (6 in a row) */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 💻 6 columns */
+  gap: 1.2rem;
+}
+
+/* TABLET (3 in a row) */
+@media (max-width: 992px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* MOBILE (2 in a row) */
+@media (max-width: 576px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
 }

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext} from "react";
 import axios from "axios";
 import "./Bracelets.css";
 import Loader from "../loader/Loader";
 import { useNavigate } from "react-router-dom";
 import ShowPage from "./Showpage.jsx";
-
+import { AuthContext } from "../context/AuthContext";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export default function Bracelets() {
@@ -14,7 +14,7 @@ export default function Bracelets() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-
+  const {user}=useContext(AuthContext);
   const fetchBracelets = async () => {
     try {
       setLoading(true);
@@ -70,7 +70,8 @@ export default function Bracelets() {
                  <ShowPage    products={bestSeller}  />
 <hr />
       {/* ADD BUTTON */}
-      <div className="braceletBtn mt-4 text-center">
+     {user?.role=="admin" && (
+         <div className="braceletBtn mt-4 text-center">
         <button
           className="btn btn-primary"
           onClick={() => navigate("/product/addFile")}
@@ -78,6 +79,8 @@ export default function Bracelets() {
           Add Product
         </button>
       </div>
+     )}
+      
     </>
   );
 }

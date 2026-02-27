@@ -28,7 +28,9 @@ export default function BraceletsFile() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await axios.get(`${BACKEND_URL}/products/${id}`);
+        const res = await axios.get(`${BACKEND_URL}/products/${id}`,data, {
+  headers: { "Content-Type": "multipart/form-data" },
+});
         const data = res.data;
 
         setFormData({
@@ -82,7 +84,8 @@ export default function BraceletsFile() {
     try {
       setLoading(true);
       await axios.put(`${BACKEND_URL}/products/${id}`, data, {
-        headers: { "Content-Type": "multipart/form-data" },
+         headers: { "Content-Type": "multipart/form-data" },
+  withCredentials: true,
       });
 
       alert("Product updated successfully");

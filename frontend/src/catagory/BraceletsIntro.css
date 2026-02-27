@@ -81,58 +81,60 @@ img{
 
 }
 
-
 @media screen and (max-width:600px) {
-    .cont-bracelet{
-      display: none;
-    }
-    .back-img{
-      z-index:1;
-      border-radius: 5rem;
-    }
-    .front-img{
-      height: 5.6rem;
-      width: 5.6rem;
-      z-index: 2;
-      padding: 0.5rem;
-      position: relative;
-      top: -10rem;
-      left: 4.5rem;
-      border-radius: 2rem;
-      object-fit: fill;
-      animation: scrollLeft 10s ease-in-out infinite;
-        }
 
-        .btn-outline-pink {
-    border: 2px solid  rgb(247, 72, 247);;   /* Bootstrap purple */
-    color:  rgb(247, 72, 247);
+  .cont-bracelet{
+    display: none;
+  }
+
+  /* BACK IMAGE */
+  .back-img{
+    width: 100%;
+    z-index: 1;
+    border-radius: 2rem;     
+  }
+
+  /* FRONT OVERLAY IMAGES */
+  .front-img{
+    height: 4.2rem;         
+    width: 4.2rem;          
+
+    z-index: 2;
+    padding: 0.3rem;
+
+    position: relative;
+    top: -7.5rem;           
+    left: 2.5rem;           
+
+    border-radius: 1.2rem;
+    object-fit: cover;
+
+    animation: scrollLeft 10s ease-in-out infinite;
+  }
+
+  /* BUTTON */
+  .btn-outline-pink {
+    border: 2px solid rgb(247, 72, 247);
+    color: rgb(247, 72, 247);
     background-color: transparent;
-    margin-left: 13rem;
-    margin-top: -17rem;
-    height: 3rem;
-}
-.btn-outline-pink:hover {
-    background-color:  rgb(247, 72, 247);
+
+    margin-left: 7rem;      
+    margin-top: -12rem;     
+    height: 2.5rem;
+    font-size: 0.85rem;     
+  }
+
+  .btn-outline-pink:hover {
+    background-color: rgb(247, 72, 247);
     color: white;
-}
+  }
 
-
-@keyframes scrollLeft {
- 0%{
-     opacity: 0.3;
- }
- 25%{
-  opacity: 0.5;
- }
- 50%{
-  opacity: 0.7;
- }
- 75%{
-  opacity: 0.9;
- }
- 100%{
-  opacity: 1;
- }
-
-}
+  /* OPACITY ANIMATION */
+  @keyframes scrollLeft {
+    0%   { opacity: 0.3; }
+    25%  { opacity: 0.5; }
+    50%  { opacity: 0.7; }
+    75%  { opacity: 0.9; }
+    100% { opacity: 1; }
+  }
 }

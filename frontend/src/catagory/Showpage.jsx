@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import "./Showpage.css";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 export default function ShowPage({ products = [] }) {
+  const [price, setPrice] = useState(null);
+
+  useEffect(() => {
+    const fetchPrice = async () => {
+      try {
+        const res = await axios.get(`${BACKEND_URL}/price`);
+        setPrice(res.data);
+      } catch (err) {
+        console.error("Price fetch error", err);
+      }
+    };
+    fetchPrice();
+  }, []);
 
   if (!products.length) {
     return <p className="text-center mt-5">No listings found</p>;
@@ -10,36 +26,39 @@ export default function ShowPage({ products = [] }) {
 
   return (
     <div className="container mt-5">
-      <div className="row">
-        {products.map((product) => (
-          <div
-            className="col-lg-2 col-md-4 col-sm-6 mb-4"
-            key={product._id}
-          >
-            <div className="card h-100 shadow-sm">
-              <img
-                src={product.images?.url}
-                className="card-img-top"
-                alt={product.name}
-              />
+  <div className="product-grid">
+    {products.map((product) => (
+      <div className="product-card" key={product._id}>
+        <div className="card h-100 shadow-sm">
+          <img
+            src={product.images?.url}
+            className="card-img-top"
+            alt={product.name}
+          />
 
-              <div className="card-body d-flex flex-column text-center">
-                <p className="card-text mb-1">
-                  {product.name.slice(0, 12)}...
-                </p>
-                <p className="card-text mb-2">₹{product.price}</p>
+          <div className="card-body d-flex flex-column text-center">
+            <p className="card-text mb-1">
+              {product.name.slice(0, 12)}...
+            </p>
 
-                <Link
-                  to={`/product/${product._id}`}
-                  className="btn view-detail mt-auto"
-                >
-                  View Details
-                </Link>
-              </div>
-            </div>
+            <p className="card-text mb-2">
+              ₹{" "}
+              {product.material === "gold"
+                ? product.weight * price?.gold
+                : product.weight * price?.silver}
+            </p>
+
+            <Link
+              to={`/product/${product._id}`}
+              className="btn view-detail mt-auto"
+            >
+              View Details
+            </Link>
           </div>
-        ))}
+        </div>
       </div>
-    </div>
+    ))}
+  </div>
+</div>
   );
 }
