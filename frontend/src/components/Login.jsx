@@ -4,6 +4,7 @@ import "./auth.css";
 import Loader from "../loader/Loader";
 import { useNavigate } from "react-router-dom";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+const { setUser } = useContext(AuthContext);
 
 export default function Login() {
   const [loading , setLoading]=useState(false);
@@ -34,12 +35,16 @@ export default function Login() {
         { withCredentials: true }
       );
 
+      if (res.data.success) {
+        setUser(res.data.user); // Update Context state
+        navigate('/');          // Move to home
+      }
       
     } catch (err) {
       console.log("FETCH ERR", err.response?.data || err);
     } finally {
       setLoading(false);
-      navigate('/')
+      
     }
   };
   
