@@ -21,13 +21,16 @@ export default function Earings() {
 
       const [bestRes, newRes,trendRes] = await Promise.all([
         axios.get(
-          `${BACKEND_URL}/products?category=earring&isBestSeller=true`
+          `${BACKEND_URL}/products?category=earring&isBestSeller=true`,
+          { withCredentials: true }
         ),
         axios.get(
-          `${BACKEND_URL}/products?category=earring&isNew=true`
+          `${BACKEND_URL}/products?category=earring&isNew=true`,
+          { withCredentials: true }
         ),
         axios.get(
-          `${BACKEND_URL}/products?category=earring&isTrending=true`
+          `${BACKEND_URL}/products?category=earring&isTrending=true`,
+          { withCredentials: true }
         )
       ]);
 

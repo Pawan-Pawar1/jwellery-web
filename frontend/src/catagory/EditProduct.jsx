@@ -30,6 +30,7 @@ export default function BraceletsFile() {
       try {
         const res = await axios.get(`${BACKEND_URL}/products/${id}`,data, {
   headers: { "Content-Type": "multipart/form-data" },
+  withCredentials: true,
 });
         const data = res.data;
 

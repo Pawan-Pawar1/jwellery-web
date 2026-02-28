@@ -21,13 +21,16 @@ export default function Bracelets() {
 
       const [bestRes, newRes,trendRes] = await Promise.all([
         axios.get(
-          `${BACKEND_URL}/products?category=bracelet&isBestSeller=true`
+          `${BACKEND_URL}/products?category=bracelet&isBestSeller=true`,
+          { withCredentials: true }
         ),
         axios.get(
-          `${BACKEND_URL}/products?category=bracelet&isNew=true`
+          `${BACKEND_URL}/products?category=bracelet&isNew=true`,
+          { withCredentials: true }
         ),
         axios.get(
-          `${BACKEND_URL}/products?category=bracelet&isTrending=true`
+          `${BACKEND_URL}/products?category=bracelet&isTrending=true`,
+          { withCredentials: true }
         )
       ]);
 

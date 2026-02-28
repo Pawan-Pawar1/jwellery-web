@@ -15,7 +15,9 @@ export default function PriceBoard() {
   });
 
   const fetchPrice = async () => {
-    const res = await axios.get(`${BACKEND_URL}/price`);
+    const res = await axios.get(`${BACKEND_URL}/price`,{
+      withCredentials : true,
+    });
     setPrice(res.data);
     setFormData({
       gold: res.data?.gold || "",

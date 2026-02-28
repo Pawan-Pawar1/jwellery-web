@@ -18,7 +18,9 @@ export default function ProductDetails() {
   // 🔹 Fetch gold/silver price
   const fetchPrice = async () => {
     try {
-      const res = await axios.get(`${BACKEND_URL}/price`);
+      const res = await axios.get(`${BACKEND_URL}/price`,{
+        withCredentials:true,
+      });
       setPrice(res.data);
     } catch (err) {
       console.error("Price fetch failed", err);
@@ -28,7 +30,9 @@ export default function ProductDetails() {
   // 🔹 Fetch product
   const fetchProduct = async () => {
     try {
-      const res = await axios.get(`${BACKEND_URL}/products/${id}`);
+      const res = await axios.get(`${BACKEND_URL}/products/${id}`,{
+          withCredentials: true ,
+      });
       setProduct(res.data);
     } catch (err) {
       console.error("Product fetch failed", err);

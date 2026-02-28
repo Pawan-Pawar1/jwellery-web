@@ -22,13 +22,16 @@ export default function Rings() {
 
       const [bestRes, newRes,trendRes] = await Promise.all([
         axios.get(
-          `${BACKEND_URL}/products?category=ring&isBestSeller=true`
+          `${BACKEND_URL}/products?category=ring&isBestSeller=true`,
+           { withCredentials: true }
         ),
         axios.get(
-          `${BACKEND_URL}/products?category=ring&isNew=true`
+          `${BACKEND_URL}/products?category=ring&isNew=true`,
+           { withCredentials: true }
         ),
         axios.get(
-          `${BACKEND_URL}/products?category=ring&isTrending=true`
+          `${BACKEND_URL}/products?category=ring&isTrending=true`,
+           { withCredentials: true }
         )
       ]);
 

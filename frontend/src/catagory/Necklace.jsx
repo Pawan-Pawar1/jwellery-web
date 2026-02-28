@@ -22,13 +22,16 @@ export default function Necklace() {
 
       const [bestRes, newRes,trendRes] = await Promise.all([
         axios.get(
-          `${BACKEND_URL}/products?category=necklace&isBestSeller=true`
+          `${BACKEND_URL}/products?category=necklace&isBestSeller=true`,
+           { withCredentials: true }
         ),
         axios.get(
-          `${BACKEND_URL}/products?category=necklace&isNew=true`
+          `${BACKEND_URL}/products?category=necklace&isNew=true`,
+           { withCredentials: true }
         ),
         axios.get(
-          `${BACKEND_URL}/products?category=necklace&isTrending=true`
+          `${BACKEND_URL}/products?category=necklace&isTrending=true`,
+           { withCredentials: true }
         )
       ]);
 
