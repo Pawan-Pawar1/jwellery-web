@@ -5,7 +5,7 @@ import Loader from "../loader/Loader";
 import { useNavigate } from "react-router-dom";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 import { AuthContext } from "../context/AuthContext";
-const { setUser } = useContext(AuthContext);
+
 
 export default function Login() {
   const [loading , setLoading]=useState(false);
@@ -15,6 +15,8 @@ export default function Login() {
   })
 
   const navigate=useNavigate();
+  const { setUser } = useContext(AuthContext);
+  
  const handleChange = (e) => {
     setFormData({
       ...formData,
