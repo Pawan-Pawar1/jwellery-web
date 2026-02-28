@@ -1,7 +1,10 @@
 import React from "react";
 import { MapPin, Phone, Mail, Info } from "lucide-react";
 import "./About.css"
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 export default function AboutUs() {
+    const position = [19.7162006, 77.1402924]; 
   return (
     <div className="px-6 py-12 max-w-5xl mx-auto mt-5 privacy-container">
       
@@ -57,9 +60,7 @@ export default function AboutUs() {
           <MapPin className="text-purple-600 mt-1" />
           <div>
             <p className="text-gray-700">
-              Shop No. 12, Main Market Road,
-              <br />
-              Your City, Your District, 000000
+              Sarafa Bazar, Bangar Nagar, Hingoli, Maharashtra 431513
             </p>
 
             <p className="text-gray-600 mt-4">
@@ -70,7 +71,14 @@ export default function AboutUs() {
 
         {/* Map Box (Optional UI Placeholder) */}
         <div className="mt-6 w-full h-56 bg-purple-50 border border-purple-200 rounded-xl flex items-center justify-center text-gray-500">
-          Map Preview (optional)
+       <MapContainer center={position} zoom={15} style={{ height: "400px", width: "100%" }}>
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <Marker position={position}>
+        <Popup>My Shop Location 📍</Popup>
+      </Marker>
+    </MapContainer>
         </div>
       </div>
     </div>

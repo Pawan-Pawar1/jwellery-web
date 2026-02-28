@@ -32,7 +32,7 @@ const navigate=useNavigate();
         { withCredentials: true }
       );
 
-      console.log("SIGNUP SUCCESS:", res.data);
+      
     } catch (err) {
       console.log("FETCH ERR", err.response?.data || err);
     } finally {
