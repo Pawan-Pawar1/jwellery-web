@@ -18,7 +18,7 @@ app.use(cookieParser());
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://jwell-backend.onrender.com"
+    "https://jwellery-web.netlify.app"
   ],
   credentials: true,
 }));
