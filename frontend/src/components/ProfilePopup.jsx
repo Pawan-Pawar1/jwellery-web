@@ -12,7 +12,7 @@ export default function ProfilePopup({ close }) {
   const navigate = useNavigate();
 
   const logout = async () => {
-    await axios.get(
+    await axios.post(
       `${BACKEND_URL}/logout`,
       {},
       { withCredentials: true }
@@ -22,7 +22,7 @@ export default function ProfilePopup({ close }) {
     navigate("/login");
   };
   function goBack(){
-    navigate("/");
+    navigate("/",{ replace: true });
   }
 
   if (!user) {
