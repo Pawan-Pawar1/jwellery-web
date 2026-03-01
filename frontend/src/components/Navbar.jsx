@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import ProfilePopup from "./ProfilePopup";
 export default function Navbar(){
  const { user, loading } = useContext(AuthContext);
- console.log(user);
+
   const[open, setOpen]=useState(false);
   const[authClick, setAuthClick]=useState(false);
   
