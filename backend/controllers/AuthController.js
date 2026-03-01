@@ -101,12 +101,11 @@ module.exports.getProfile = async (req, res) => {
 module.exports.Logout = async (req, res) => {
   try {
     // Clearing JWT cookie
-    res.cookie("token", "", { 
+  res.clearCookie("token", {
       httpOnly: true,
       sameSite: "none",
       secure: true,
-      path: "/",
-      expires: new Date(0) 
+      path: "/",   // 🔥 MUST be same as login
     });
     // Sending success response
     res.status(200).json({ message: "Logged out successfully" });
