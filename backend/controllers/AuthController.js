@@ -29,6 +29,7 @@ module.exports.SignUp = async (req, res) => {
       httpOnly: true,
       sameSite: "none",
       secure: true, // true in production (HTTPS)
+      path: "/",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
@@ -66,6 +67,7 @@ module.exports.Login = async (req, res) => {
       httpOnly: true,
       sameSite: "none",
       secure: true, // true in production
+      path: "/",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
@@ -103,6 +105,7 @@ module.exports.Logout = async (req, res) => {
       httpOnly: true,
       sameSite: "none",
       secure: true,
+      path: "/",
       expires: new Date(0) 
     });
     // Sending success response
